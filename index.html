@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+
+
+
+<section class="logo-marquee">
+  <h2 class="marquee-title">اهم دوراتنا</h2>
+
+  <!-- الصف الأول: يمشي لليسار -->
+  <div class="marquee-row marquee-left">
+    <div class="marquee-track">
+      <!-- المجموعة الأولى -->
+      <div class="logo-item"><img src="assets/01.webp" alt="Company 1"></div>
+      <div class="logo-item"><img src="assets/02.webp" alt="Company 2"></div>
+      <div class="logo-item"><img src="assets/03.webp" alt="Company 3"></div>
+      <div class="logo-item"><img src="assets/04.webp" alt="Company 4"></div>
+      <div class="logo-item"><img src="assets/05.webp" alt="Company 5"></div>
+      <div class="logo-item"><img src="assets/06.webp" alt="Company 6"></div>
+      <div class="logo-item"><img src="assets/07.webp" alt="Company 6"></div>
+      
+      <!-- المجموعة الثانية: نسخة طبق الأصل عشان اللوب يكمل -->
+      <div class="logo-item"><img src="assets/08.webp" alt="Company 1"></div>
+      <div class="logo-item"><img src="assets/09.webp" alt="Company 2"></div>
+      <div class="logo-item"><img src="assets/10.webp" alt="Company 3"></div>
+      <div class="logo-item"><img src="assets/11.webp" alt="Company 4"></div>
+      <div class="logo-item"><img src="assets/12.webp" alt="Company 5"></div>
+      <div class="logo-item"><img src="assets/13.webp" alt="Company 6"></div>
+      <div class="logo-item"><img src="assets/14.webp" alt="Company 6"></div>
+    </div>
+  </div>
+
+  <!-- الصف الثاني: يمشي لليمين -->
+  <div class="marquee-row marquee-right">
+    <div class="marquee-track">
+      <!-- المجموعة الأولى -->
+       <div class="logo-item"><img src="assets/01.webp" alt="Company 1"></div>
+      <div class="logo-item"><img src="assets/02.webp" alt="Company 2"></div>
+      <div class="logo-item"><img src="assets/03.webp" alt="Company 3"></div>
+      <div class="logo-item"><img src="assets/04.webp" alt="Company 4"></div>
+      <div class="logo-item"><img src="assets/05.webp" alt="Company 5"></div>
+      <div class="logo-item"><img src="assets/06.webp" alt="Company 6"></div>
+      <div class="logo-item"><img src="assets/07.webp" alt="Company 6"></div>
+      
+      <!-- المجموعة الثانية: نسخة طبق الأصل عشان اللوب يكمل -->
+      <div class="logo-item"><img src="assets/08.webp" alt="Company 1"></div>
+      <div class="logo-item"><img src="assets/09.webp" alt="Company 2"></div>
+      <div class="logo-item"><img src="assets/10.webp" alt="Company 3"></div>
+      <div class="logo-item"><img src="assets/11.webp" alt="Company 4"></div>
+      <div class="logo-item"><img src="assets/12.webp" alt="Company 5"></div>
+      <div class="logo-item"><img src="assets/13.webp" alt="Company 6"></div>
+      <div class="logo-item"><img src="assets/14.webp" alt="Company 6"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+.logo-marquee {
+  width: 100%;
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.marquee-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  font-family: sans-serif;
+}
+
+.marquee-row {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+/* تدرج شفاف على الأطراف عشان الشكل يبقى ناعم */
+.marquee-row::before,
+.marquee-row::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  z-index: 2;
+}
+
+.marquee-row::before {
+  left: 0;
+  background: linear-gradient(to right, #f8f9fa 0%, transparent 100%);
+}
+
+.marquee-row::after {
+  right: 0;
+  background: linear-gradient(to left, #f8f9fa 0%, transparent 100%);
+}
+
+.marquee-track {
+  display: flex;
+  width: fit-content;
+}
+
+.logo-item {
+  flex-shrink: 0;
+  width: 200px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40px;
+}
+
+.logo-item img {
+  max-width: 200px;
+  max-height: 100px;
+  filter: grayscale(100%);
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+
+.logo-item img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* الصف اللي بيمشي لليسار */
+.marquee-left .marquee-track {
+  animation: scroll-left 30s linear infinite;
+}
+
+/* الصف اللي بيمشي لليمين */
+.marquee-right .marquee-track {
+  animation: scroll-right 30s linear infinite;
+}
+
+/* الحركة لليسار */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* الحركة لليمين */
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* توقف الحركة عند الـ hover */
+.marquee-row:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ريسبونسف للموبايل */
+@media (max-width: 768px) {
+  .logo-item {
+    width: 150px;
+    margin: 0 20px;
+  }
+  .logo-item img {
+    max-width: 100px;
+  }
+  .marquee-left .marquee-track,
+  .marquee-right .marquee-track {
+    animation-duration: 20s;
+  }
+}
+</style>
+
+
+
+</body>
+</html>
